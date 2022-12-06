@@ -50,12 +50,13 @@ def display_content(content):
     
     if eng.match(content.title):
         title = content.title
+        title = title[0:51] + "..." if len(title) > 50 else title
     elif arb.match(content.title):
         reshaped_text = arabic_reshaper.reshape(content.title)
         title = reshaped_text[::-1]
+        title = "..."  + title[0:51] if len(title) > 50 else title
     
         
-    title = title[0:51] + "..." if len(title) > 50 else title
     name_preview_label.configure(text=title)
 
     # Grabs the thumbnail of the first video incase of playlist
@@ -120,8 +121,7 @@ thumbnail_preview_label.grid(row=3, column=1)
 
 # Download area
 
-download_frame = customtkinter.CTkFrame(master=frame,width=400)
-download_frame.grid(row=4,column=0,columnspan=2,pady=20, padx= 60)
+#TODO: ADD FRAME FOR DOWNLOAD
 
 
 
